@@ -1,6 +1,7 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  projectId: "qgzc5k",
   viewportWidth: 1920,
   viewportHeight: 1080,
   defaultCommandTimeout: 60000,
@@ -12,8 +13,8 @@ module.exports = defineConfig({
     chromeWebSecurity:false,
   },
   env: {
-    authorUrl: 'http://localhost:4502',
-    publishUrl: 'http://localhost:4503',
+    authorUrl: 'https://a29b-93-136-186-63.ngrok-free.app/',
+    publishUrl: 'https://9908-93-136-186-63.ngrok-free.app/',
     authorUsername: 'admin',
     authorPassword: 'admin'
   },
