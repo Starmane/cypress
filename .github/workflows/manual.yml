@@ -1,4 +1,7 @@
 name: Cypress Tests
+  run: echo "Key is set? >> ${CYPRESS_RECORD_KEY}"
+  env:
+    CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
 on:
   workflow_dispatch:  # Manual trigger
