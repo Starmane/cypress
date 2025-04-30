@@ -3,7 +3,7 @@ describe('Desktop Home Page Visual Check - Publish', () => {
         body: 'body',
     };
 
-    it.skip('should run a Percy snapshot on home page to check for design differences between new code versions', () => {
+    it('should run a Percy snapshot on home page to check for design differences between new code versions', () => {
         cy.visitPublishUrl('/content/regression/us/en.html');
 
         // Verify the body is visible
