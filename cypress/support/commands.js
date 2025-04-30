@@ -8,6 +8,7 @@ Cypress.Commands.add('visitAuthorUrl', (url) => {
     cy.visit(Cypress.env('authorUrl') + url, {
         headers: {
             Authorization: `Basic ${base64Credentials}`,
+            'ngrok-skip-browser-warning': '69420'
         },
     });
 });
@@ -28,6 +29,7 @@ Cypress.Commands.add('loginToAEM', () => {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
             'Referer': Cypress.env('authorUrl') + '/libs/granite/core/content/login.html?resource=%2Faem%2Fstart.html&$$login$$=%24%24login%24%24&j_reason=unknown&j_reason_code=unknown',
+            'ngrok-skip-browser-warning': '69420'
         },
         body: params.toString(),
         form: true
@@ -49,7 +51,8 @@ Cypress.Commands.add('createAEMSite', (pageName,parentPagePath,template) => {
         method: 'GET',
         url: Cypress.env('authorUrl') + '/libs/granite/csrf/token.json',
         headers: {
-            Authorization: `Basic ${base64Credentials}`
+            Authorization: `Basic ${base64Credentials}`,
+            'ngrok-skip-browser-warning': '69420'
         }
     }).then((tokenResponse) => {
         expect(tokenResponse.status).to.eq(200);
@@ -67,6 +70,7 @@ Cypress.Commands.add('createAEMSite', (pageName,parentPagePath,template) => {
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
                 'Referer': '/mnt/overlay/wcm/core/content/sites/createpagewizard.html' + parentPagePath,
                 'Csrf-Token': csrfToken, 
+                'ngrok-skip-browser-warning': '69420'
             },
             body: params.toString(),
             form: true
@@ -90,7 +94,8 @@ Cypress.Commands.add('replicateAEMPage', (pagePath) => {
         method: 'GET',
         url: Cypress.env('authorUrl') + '/libs/granite/csrf/token.json',
         headers: {
-            Authorization: `Basic ${base64Credentials}`
+            Authorization: `Basic ${base64Credentials}`,
+            'ngrok-skip-browser-warning': '69420'
         }
     }).then((tokenResponse) => {
         expect(tokenResponse.status).to.eq(200);
@@ -108,6 +113,7 @@ Cypress.Commands.add('replicateAEMPage', (pagePath) => {
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
                 'Referer': Cypress.env('authorUrl') + '/sites.html/content/regression/us/en',
                 'Csrf-Token': csrfToken, 
+                'ngrok-skip-browser-warning': '69420'
             },
             body: params.toString(),
             form: true
@@ -130,7 +136,8 @@ Cypress.Commands.add('deleteAEMPage', (pagePath) => {
         method: 'GET',
         url: Cypress.env('authorUrl') + '/libs/granite/csrf/token.json',
         headers: {
-            Authorization: `Basic ${base64Credentials}`
+            Authorization: `Basic ${base64Credentials}`,
+            'ngrok-skip-browser-warning': '69420'
         }
     }).then((tokenResponse) => {
         expect(tokenResponse.status).to.eq(200);
@@ -150,6 +157,7 @@ Cypress.Commands.add('deleteAEMPage', (pagePath) => {
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
                 'Referer': Cypress.env('authorUrl') + '/sites.html/content/regression/us/en',
                 'Csrf-Token': csrfToken, 
+                'ngrok-skip-browser-warning': '69420'
             },
             body: params.toString(),
             form: true
@@ -165,7 +173,11 @@ Cypress.Commands.add('deleteAEMPage', (pagePath) => {
 Cypress.Commands.add('visitPublishUrl', (url) => {
     const publishBaseUrl = Cypress.env('publishUrl');
 
-    cy.visit(publishBaseUrl + url);
+    cy.visit(publishBaseUrl + url, {
+        headers: {
+            'ngrok-skip-browser-warning': '69420'
+        },
+    });
 });
 
 Cypress.on('uncaught:exception', (err, runnable) => {

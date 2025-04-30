@@ -62,14 +62,14 @@ describe('Desktop Content distribution of configured component - Author & Publis
 
         // Upload and configure image
         cy.get(selectors.assetTab).contains('Asset').click({ force: true });
+        cy.get(selectors.altValueFromDAMInput).uncheck({force:true});
+        cy.get(selectors.altInput).should('not.be.disabled').clear().type('Some custom image alt description', { force: true });
         cy.get(selectors.imageFromPageCheckbox).click({ force: true });
         cy.get(selectors.fileUploadButton).contains('Pick').click({ force: true });
         cy.get(selectors.dialogContent).should('be.visible');
         cy.get(selectors.imageCheckbox).click({ force: true });
         cy.get(selectors.selectButton).click({ force: true });
         cy.get(selectors.fileUploadFilled).should('have.class', 'is-filled');
-        cy.get(selectors.altValueFromDAMInput).uncheck();
-        cy.get(selectors.altInput).should('not.be.disabled').clear().type('Some custom image alt description', { force: true });
         cy.get(selectors.doneButton).click({ force: true });
 
         // Publish the page

@@ -13,8 +13,8 @@ module.exports = defineConfig({
     chromeWebSecurity:false,
   },
   env: {
-    authorUrl: 'https://a29b-93-136-186-63.ngrok-free.app/',
-    publishUrl: 'https://9908-93-136-186-63.ngrok-free.app/',
+    authorUrl: 'https://uitesting.ngrok.app',
+    publishUrl: 'https://uitestingpublish.ngrok.app',
     authorUsername: 'admin',
     authorPassword: 'admin'
   },
