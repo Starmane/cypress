@@ -31,13 +31,13 @@ describe('Desktop Content distribution of configured component - Author & Publis
         teaserImage: 'div.cmp-teaser .cmp-teaser__image img'
     };
 
-    const pagePath = '/content/regression/us/en/distribution-flow-test-page';
+    const pagePath = '/content/regression/us/en/distribution-flow-test';
     const pageTemplate = '/conf/wknd/settings/wcm/templates/content-page-template';
     const siteParent = '/content/regression/us/en';
 
     it('should validate that component can be placed on a page, configured and distributed to publish instance', () => {
         cy.loginToAEM();
-        cy.createAEMSite('distribution-flow-test-page', siteParent, pageTemplate);
+        cy.createAEMSite('distribution-flow-test', siteParent, pageTemplate);
         // Open the page in Author mode
         cy.visitAuthorUrl(`/editor.html${pagePath}.html`);
         cy.get(selectors.secondaryActionBar).should('have.class', 'is-selected');
