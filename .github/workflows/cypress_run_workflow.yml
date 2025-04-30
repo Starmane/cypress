@@ -1,4 +1,4 @@
-name: Cypress Tests
+name: Cypress Tests with Percy
 
 on:
   workflow_dispatch:  # Manual trigger
@@ -18,11 +18,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
-        with:
-          record: true
-          parallel: true
+      - name: Start Percy agent
+        run: npx percy exec -- npx cypress run
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
