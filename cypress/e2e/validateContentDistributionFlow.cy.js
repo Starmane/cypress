@@ -47,7 +47,7 @@ describe('Desktop Content distribution of configured component - Author & Publis
         // Insert and configure Teaser component
         cy.get(selectors.insertComponentButton).click({ force: true });
         cy.get(selectors.insertComponentList).contains('Teaser').click({ force: true });
-        cy.get(selectors.draggableDroptarget).click({ force: true });
+        cy.get(selectors.draggableDroptarget).first().click({ force: true });
         cy.get(selectors.editableToolbar).should('have.css', 'display', 'block');
         cy.get(selectors.configureButton).click({ force: true });
         cy.get(selectors.openDialog).should('be.visible');
