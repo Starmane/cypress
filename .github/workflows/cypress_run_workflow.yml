@@ -20,9 +20,16 @@ jobs:
       # because of "record" and "parallel" parameters
       # these containers will load balance all found tests among themselves
       - name: Cypress run
-        run: npx percy exec -- npx cypress run --parallel --group cypress-action --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
+        uses: cypress-io/github-action@v6
+        with:
+          record: true
+          parallel: true
+          group: 'Actions example'
+          command-prefix: 'percy exec -- npx'
         env:
           # pass the Cypress Cloud record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          PERCY_PARALLEL_TOTAL: 3
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
