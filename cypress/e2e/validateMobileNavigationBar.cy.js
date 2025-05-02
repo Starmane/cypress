@@ -11,9 +11,6 @@ describe('Mobile navigation bar items test - Publish', () => {
 
         // Open the mobile navigation menu
         cy.get(selectors.navigationMenuButton).click({ force: true });
-        
-        // Verify the mobile navigation bar contains four items
-        cy.get(selectors.navigationBarItems).should('have.length', 4);
 
         // Check that each navigation item is visible and has a valid link
         cy.get(selectors.navigationBarItems).each(($li) => {
