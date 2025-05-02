@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        containers: [1, 2]
+        containers: [1, 2, 3]
 
     steps:
       - name: Checkout
@@ -19,7 +19,6 @@ jobs:
         run: npm ci
 
       - name: Start Percy agent
-        run: npx percy exec -- npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
+        run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
