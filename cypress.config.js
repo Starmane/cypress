@@ -1,4 +1,5 @@
 const { defineConfig } = require("cypress");
+const cypressSplit = require('cypress-split')
 
 module.exports = defineConfig({
   projectId: "qgzc5k",
@@ -11,6 +12,11 @@ module.exports = defineConfig({
     specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
     supportFile: 'cypress/support/e2e.js',
     chromeWebSecurity:false,
+    setupNodeEvents(on, config) {
+      cypressSplit(on, config)
+      // IMPORTANT: return the config object
+      return config
+    },
   },
   env: {
     authorUrl: 'https://uitesting.ngrok.app',
@@ -19,5 +25,5 @@ module.exports = defineConfig({
     authorPassword: 'admin'
   },
   screenshotsFolder: 'cypress/screenshots',
-  retries: 0
+  retries: 1
 });

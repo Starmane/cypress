@@ -15,6 +15,7 @@
     "@percy/cypress": "^3.1.6",
     "axe-core": "^4.10.3",
     "cypress": "^14.3.2",
-    "cypress-axe": "^1.6.0"
+    "cypress-axe": "^1.6.0",
+    "cypress-split": "^1.24.14"
   }
 }

@@ -1,0 +1,21 @@
+name: Parallel Cypress Tests
+on: workflow_dispatch
+jobs:
+  test:
+    name: Cypress run
+    runs-on: ubuntu-24.04
+    # run 3 copies of the current job in parallel
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2, 3]
+    steps:
+      - name: Run split Cypress tests 🧪
+        uses: cypress-io/github-action@v6
+        # pass the machine index and the total number
+        env:
+          SPLIT: ${{ strategy.job-total }}
+          SPLIT_INDEX: ${{ strategy.job-index }}
+          command-prefix: 'percy exec -- npx'
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          PERCY_PARALLEL_TOTAL: 3
